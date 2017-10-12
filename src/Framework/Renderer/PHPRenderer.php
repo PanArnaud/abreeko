@@ -1,4 +1,5 @@
 <?php
+
 namespace Framework\Renderer;
 
 class PHPRenderer implements RendererInterface
