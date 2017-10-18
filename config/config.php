@@ -1,10 +1,17 @@
 <?php
 
+use Framework\Renderer\{
+    RendererInterface,
+    TwigRendererFactory
+};
+use Framework\Twig\{
+    TextExtension,
+    TimeExtension,
+    PagerFantaExtension
+};
 use Framework\Router;
 use Psr\Container\ContainerInterface;
-use Framework\Renderer\RendererInterface;
 use Framework\Router\RouterTwigExtension;
-use Framework\Renderer\TwigRendererFactory;
 
     return  [
         'database.host' => 'localhost',
@@ -13,7 +20,10 @@ use Framework\Renderer\TwigRendererFactory;
         'database.name' => 'abk_database',
         'views.path' => dirname(__DIR__) . '/views',
         'twig.extensions' => [
-            \DI\get(\Framework\Router\RouterTwigExtension::class)
+            \DI\get(RouterTwigExtension::class),
+            \DI\get(PagerFantaExtension::class),
+            \DI\get(TextExtension::class),
+            \DI\get(TimeExtension::class),
         ],
         Router::class => \DI\object(),
         RendererInterface::class => \DI\factory(TwigRendererFactory::class),

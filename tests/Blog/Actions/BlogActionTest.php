@@ -4,6 +4,7 @@ namespace Tests\App\Blog\Actions;
 use stdClass;
 use Framework\Router;
 use Prophecy\Argument;
+use App\Blog\Entity\Post;
 use App\Blog\Table\PostTable;
 use App\Blog\Actions\BlogAction;
 use Framework\Renderer\RendererInterface;
@@ -36,9 +37,9 @@ class BlogActionTest extends TestCase
         );
     }
      
-    public function makePost(int $id, string $slug): stdClass 
+    public function makePost(int $id, string $slug): Post
     {
-        $post = new \stdClass();
+        $post = new Post();
         $post->id = $id;
         $post->slug = $slug;
         return $post;
