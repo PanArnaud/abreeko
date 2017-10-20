@@ -15,7 +15,7 @@ foreach ($modules as $module) {
 return  [
     'paths' => [
         'migrations' => $migrations, 
-        'seeds' => $seeds
+        'seeds'      => $seeds
     ], 
     'environments' => [
         'default_database' => 'development', 
