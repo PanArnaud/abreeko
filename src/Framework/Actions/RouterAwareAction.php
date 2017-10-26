@@ -22,6 +22,6 @@ trait RouterAwareAction
         $redirectUri = $this->router->generateUri($path, $params);
         return (new Response())
             ->withStatus(301)
-            ->withHeader('location', $redirectUri);
+            ->withHeader('Location', $redirectUri);
     }
 }
