@@ -26,8 +26,19 @@
 
     <div class="container">
 
-        {% block body %}
-        {% endblock %}
+      {% if flash('success') %}
+        <div class="alert alert-success">
+          {{ flash('success') }}
+        </div>    
+      {% endif %}
+      {% if flash('errpr') %}
+        <div class="alert alert-danger">
+          {{ flash('error') }}
+        </div>    
+      {% endif %}
+
+      {% block body %}
+      {% endblock %}
 
     </div><!-- /.container -->
 

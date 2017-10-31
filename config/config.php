@@ -5,12 +5,17 @@ use Framework\Renderer\{
     TwigRendererFactory
 };
 use Framework\Twig\{
+    FlashExtension,
     TextExtension,
     TimeExtension,
     PagerFantaExtension
 };
 use Framework\Router;
 use Psr\Container\ContainerInterface;
+use Framework\Session\{
+    PHPSession, 
+    SessionInterface
+};
 use Framework\Router\RouterTwigExtension;
 
     return  [
@@ -24,8 +29,10 @@ use Framework\Router\RouterTwigExtension;
             \DI\get(PagerFantaExtension::class),
             \DI\get(TextExtension::class),
             \DI\get(TimeExtension::class),
+            \DI\get(FlashExtension::class)
         ],
-        Router::class => \DI\object(),
+        SessionInterface::class => \DI\object(PHPSession::class),
+        Router::class => \DI\object(), 
         RendererInterface::class => \DI\factory(TwigRendererFactory::class),
         \PDO::class => function(ContainerInterface $c) {
             return $pdo = new PDO(
